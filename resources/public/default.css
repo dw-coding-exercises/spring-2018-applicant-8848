@@ -1,44 +1,37 @@
+html {
+  height: 100%;
+  font-size: 0.9rem;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Oxygen', sans-serif;
+  letter-spacing: 1px;
+  padding-top: 5rem;
+  background: url('https://www.in.gov/sos/elections/images/elections-3.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-form {
-  width: 600px;
-  padding: 1em;
-  border: 1px solid #CCC;
-  border-radius: 1em;
+.bg-election-finder-nav {
+  background-color: rgba(52,58,64,0.9);
 }
 
-form div + div {
-  margin-top: 1em;
+.content.row {
+  background-color: #fff;
+  margin: 1rem;
+  padding: 1rem;
+  border: solid 1px #ccc;
 }
 
-label {
-  display: inline-block;
-  text-align: right;
-  margin-right: .3em;
-  margin-left: 1em;
+.form-group.required label:after {
+  color: #dc3545;
+  content: ' *';
+  display:inline;
 }
 
-label:first-of-type {
-  width: 90px;
-  margin-left: 0;
-}
-
-input {
-  font: 1em sans-serif;
-  box-sizing: border-box;
-  border: 1px solid #999;
-}
-
-input:focus {
-  border-color: #000;
-}
-
-.button {
-  padding-left: 90px;
-}
-
-button {
-  margin-left: .5em;
+.form-control,
+.btn {
+  border-radius: 0;
 }

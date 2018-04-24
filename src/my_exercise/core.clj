@@ -3,14 +3,21 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.reload :refer [wrap-reload]]
-            [my-exercise.home :as home]))
+            [ring.middleware.params :refer [wrap-params]]
+            [ring.middleware.json :refer [wrap-json-params wrap-json-response]]
+            [my-exercise.home :as home]
+            [my-exercise.search :as search]))
 
-(defroutes app
-  (GET "/" [] home/page)
-  (route/resources "/")
-  (route/not-found "Not found"))
+(defroutes site-routes
+           (GET "/" [] home/page)
+           (POST "/search" [state city] (search/page state city))
+           (route/resources "/")
+           (route/not-found "<h2>Sorry, page not found</h2>"))
 
-(def handler
-  (-> app
+(def app
+  (-> site-routes
       (wrap-defaults site-defaults)
-      wrap-reload))
+      wrap-reload
+      wrap-params
+      wrap-json-params
+      wrap-json-response))
